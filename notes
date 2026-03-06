@@ -25,3 +25,32 @@
 28.2% → CAD history (Coronary Artery Disease, a condition affecting the hearts blood vessels)
 27.9% → Prior stroke history (history of previous stroke events)
 19.7%** → PVD history  (Peripheral Vascular Disease, a condition affecting blood vessels outside the heart and brain)
+
+
+Train
+
+### ⚠️ Potential Red Flags in Anthropometric Data`
+
+| Feature | Value | Note |
+|---|---|---|
+| **weight_kg (min)** | 2 kg | Extremely low; likely newborn/pediatric entry or possible data entry error. |
+| **height_cm (min)** | 45 cm | Very short height, consistent with infants but unusual for general ED population. |
+| **bmi (min)** | 10 | Indicates severe underweight; could represent malnutrition, pediatric case, or measurement issue. |
+| **bmi (max)** | 65 | Extremely high BMI indicating severe morbid obesity. |
+
+**Conclusion:**  
+The dataset likely contains **both pediatric and adult patients**, which explains extreme values in weight, height, and BMI. However, these outliers should be **validated or handled carefully during preprocessing** to avoid distortion in model training.
+
+
+
+
+`Note pain_score = -1 → missing indicator gcs_total highly skewed (most = 15) very high NEWS2 values may indicate severe cases`
+
+
+SHOCK_INDEX
+### ⚠️ Potential Red Flags
+
+| Observation | Value | Note |
+|---|---|---|
+| Very high SI | 4.77 | Extremely abnormal; may indicate severe shock, extreme vitals, or calculation error. |
+| High upper quartile | 0.92 | Indicates a notable portion of patients approaching hemodynamic instability. |
